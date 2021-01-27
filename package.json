@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "del /s /q build && babel -d ./build ./src --copy-files",
-    "start": "node ./dist/bin/app.js",
+    "start": "node ./build/bin/app.js",
     "dev": "nodemon  --exec npm run server",
     "server": "npm run format:all && babel-node ./src/bin/app.js",
     "prelint:js": "npm run format:all",
