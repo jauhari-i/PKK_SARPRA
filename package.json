@@ -5,8 +5,10 @@
   "main": "./src/bin/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "del /s /q build && babel -d ./build ./src --copy-files",
-    "start": "node ./build/bin/app.js",
+    "build": "npm run clean && npm run build-babel",
+    "build-babel": "babel -d ./build ./src -s --copy-files",
+    "clean": "rm -rf build && mkdir build",
+    "start": "npm run build && node ./build/bin/app.js",
     "dev": "nodemon  --exec npm run server",
     "server": "npm run format:all && babel-node ./src/bin/app.js",
     "prelint:js": "npm run format:all",
