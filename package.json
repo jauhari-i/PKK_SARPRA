@@ -1,11 +1,11 @@
 {
-  "name": "node-codebase-template",
+  "name": "pkk-sarpra",
   "version": "1.0.0",
   "description": "Just A Codebase for my project",
   "main": "./src/bin/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "del /s /q dist && babel -d ./dist ./src --copy-files",
+    "build": "del /s /q build && babel -d ./build ./src --copy-files",
     "start": "node ./dist/bin/app.js",
     "dev": "nodemon  --exec npm run server",
     "server": "npm run format:all && babel-node ./src/bin/app.js",
