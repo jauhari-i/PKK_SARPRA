@@ -2,8 +2,9 @@ import { getConfig } from '../config/global_config'
 
 export default function connectMongo(mongoose) {
   const mongoURI = getConfig('/mongoDbUrl')
+  const mode = getConfig('/mode')
   mongoose.connect(
-    mongoURI,
+    mode === 'dev' ? 'mongodb://localhost:27017/sarpra' : mongoURI,
     {
       useCreateIndex: true,
       useFindAndModify: false,

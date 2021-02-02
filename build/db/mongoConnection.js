@@ -23,3 +23,4 @@ function connectMongo(mongoose) {
     }
   });
 }
+//# sourceMappingURL=mongoConnection.js.map

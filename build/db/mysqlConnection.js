@@ -24,3 +24,4 @@ var db = _mysql["default"].createPool({
 });
 
 exports.db = db;
+//# sourceMappingURL=mysqlConnection.js.map

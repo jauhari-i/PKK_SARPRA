@@ -52,3 +52,4 @@ var handleError = function handleError(err, res) {
 };
 
 exports.handleError = handleError;
+//# sourceMappingURL=error.js.map

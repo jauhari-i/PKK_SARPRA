@@ -145,3 +145,4 @@ var verifyToken = /*#__PURE__*/function () {
 }();
 
 exports.verifyToken = verifyToken;
+//# sourceMappingURL=jwt_auth_instance.js.map

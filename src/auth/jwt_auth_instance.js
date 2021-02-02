@@ -38,18 +38,50 @@ export const verifyToken = async (req, res, next) => {
 
   const token = getToken(req.headers)
   if (!token) {
-    return handleError({ statusCode: 401, message: 'Token is not valid!' })
+    return handleError({ statusCode: 401, message: 'Token is not valid!' }, res)
   }
   let decodedToken
   try {
     decodedToken = await jwt.verify(token, publicKey, verifyOptions)
   } catch (error) {
     if (error instanceof jwt.TokenExpiredError) {
-      return handleError({ statusCode: 401, message: 'Access token expired!' })
+      return handleError(
+        { statusCode: 401, message: 'Access token expired!' },
+        res
+      )
     }
-    return handleError({ statusCode: 401, message: 'Token is not valid!' })
+    return handleError({ statusCode: 401, message: 'Token is not valid!' }, res)
   }
   const userId = decodedToken.sub
+  const roles = decodedToken.roles
   req.userId = userId
+  req.roles = roles
   next()
+}
+
+export const authenticateUser = async (req, res, next) => {
+  const roles = req.roles
+  if (roles !== 0 || roles !== 1 || roles !== 2) {
+    return handleError({ statusCode: 401, message: 'Please Login First' }, res)
+  } else {
+    next()
+  }
+}
+
+export const authenticateManagement = async (req, res, next) => {
+  const roles = req.roles
+  if (roles !== 1 || roles !== 2) {
+    return handleError({ statusCode: 403, message: 'Access Forbidden!' }, res)
+  } else {
+    next()
+  }
+}
+
+export const authenticateAdmin = async (req, res, next) => {
+  const roles = req.roles
+  if (roles !== 2) {
+    return handleError({ statusCode: 403, message: 'Access Forbidden!' }, res)
+  } else {
+    next()
+  }
 }

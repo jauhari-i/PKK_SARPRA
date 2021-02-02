@@ -60,3 +60,4 @@ function ConfigureApp(app) {
     next();
   });
 }
+//# sourceMappingURL=configureApp.js.map

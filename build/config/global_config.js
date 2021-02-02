@@ -38,3 +38,4 @@ var getConfig = function getConfig(key) {
 };
 
 exports.getConfig = getConfig;
+//# sourceMappingURL=global_config.js.map

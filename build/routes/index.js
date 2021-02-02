@@ -17,3 +17,4 @@ exports.router = router;
 router.get('/', function (req, res) {
   res.sendFile(_path["default"].join(__dirname, '../public/index.html'));
 });
+//# sourceMappingURL=index.js.map

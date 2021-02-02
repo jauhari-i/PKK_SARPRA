@@ -21,6 +21,7 @@ const config = {
     password: process.env.MYSQL_PASSWORD,
     database: process.env.MYSQL_DATABASE,
   },
+  mode: process.env.MODE,
 }
 
 const store = new Confidence.Store(config)

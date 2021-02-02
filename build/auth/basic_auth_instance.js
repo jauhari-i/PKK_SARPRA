@@ -26,3 +26,4 @@ app.use((0, _expressBasicAuth["default"])({
   },
   challenge: true
 }));
+//# sourceMappingURL=basic_auth_instance.js.map

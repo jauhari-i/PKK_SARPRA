@@ -19,3 +19,4 @@ var app = (0, _express["default"])();
 app.listen(port, function () {
   console.log('Server is running on port ' + port);
 });
+//# sourceMappingURL=app.js.map
