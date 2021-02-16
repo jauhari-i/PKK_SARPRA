@@ -12,6 +12,16 @@ const router = express.Router()
 
 const {
   AuthController: { loginHandler, registerHandler },
+  UserController: {
+    deleteUserHandler,
+    detailUserHandler,
+    getAdmin,
+    getManagement,
+    getUser,
+    updateProfileHandler,
+    updatePasswordHandler,
+    updateUserHandler,
+  },
 } = controller
 
 const dummy = async (req, res) => {
@@ -57,12 +67,45 @@ router.delete('/peminjaman/delete/:id', verifyToken, authenticateAdmin, dummy)
 // User
 
 router.post('/user', verifyToken, authenticateManagement, dummy)
-router.get('/user/list', verifyToken, authenticateManagement, dummy)
-router.get('/user/profile', verifyToken, authenticateUser, dummy)
-router.get('/user/detail/:id', verifyToken, authenticateManagement, dummy)
-router.put('/user/update-profile', verifyToken, authenticateUser, dummy)
-router.put('/user/update/:id', verifyToken, authenticateManagement, dummy)
-router.delete('/user/delete/:id', verifyToken, authenticateManagement, dummy)
+router.get('/user/list', verifyToken, authenticateManagement, getUser)
+router.get(
+  '/management/list',
+  verifyToken,
+  authenticateManagement,
+  getManagement
+)
+router.get('/admin/list', verifyToken, authenticateAdmin, getAdmin)
+router.get('/user/profile', verifyToken, authenticateUser, updateUserHandler)
+router.get(
+  '/user/detail/:id',
+  verifyToken,
+  authenticateManagement,
+  detailUserHandler
+)
+router.put(
+  '/user/update-profile',
+  verifyToken,
+  authenticateUser,
+  updateProfileHandler
+)
+router.put(
+  '/user/update-password',
+  verifyToken,
+  authenticateUser,
+  updatePasswordHandler
+)
+router.put(
+  '/user/update/:id',
+  verifyToken,
+  authenticateManagement,
+  updateUserHandler
+)
+router.delete(
+  '/user/delete/:id',
+  verifyToken,
+  authenticateManagement,
+  deleteUserHandler
+)
 
 // Stock Management
 
